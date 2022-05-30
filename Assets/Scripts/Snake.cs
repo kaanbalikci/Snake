@@ -17,19 +17,19 @@ public class Snake : MonoBehaviour
     {
 
 
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W) && rotate != Vector2.down)
         {
             rotate = Vector2.up;
         }
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.S) && rotate != Vector2.up)
         {
             rotate = Vector2.down;
         }
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A) && rotate != Vector2.right)
         {
             rotate = Vector2.left;
         }
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.D) && rotate != Vector2.left)
         {
             rotate = Vector2.right;
         }
@@ -51,6 +51,8 @@ public class Snake : MonoBehaviour
         {
             var position = transform.position;
             position += (Vector3)rotate;
+            position.x = Mathf.RoundToInt(position.x);
+            position.y = Mathf.RoundToInt(position.y);
             transform.position = position;
 
             yield return new WaitForSeconds(speed);
