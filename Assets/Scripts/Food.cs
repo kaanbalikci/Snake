@@ -18,6 +18,7 @@ public class Food : MonoBehaviour
     {
         if(collision.tag == "Player")
         {
+
             Debug.Log("Yes");
             FoodReset.FD.isEat = true;
             Destroy(this.gameObject);
